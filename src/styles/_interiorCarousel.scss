@@ -1,0 +1,71 @@
+.interior-carousel {
+  position: relative;
+  overflow: hidden; /* 外層裁掉，避免整頁出現橫向卷軸 */
+  padding-right: 48px;
+
+  /* Swiper 本體 */
+  .swiper {
+    overflow: visible; /* 讓下一張能露出一半（關鍵） */
+  }
+
+  /* 每張圖片 */
+  .swiper-slide img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 763px;
+
+    @media (min-width: 768px) and (max-width: 1919.98px) {
+      width: 100%;
+      height: 555px;
+    }
+
+    @media (max-width: 767.98px) {
+      width: 100%;
+      height: 303px;
+    }
+  }
+
+  /* -------- Pagination 分頁點點 -------- */
+  .swiper-pagination {
+    position: static;
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px; /* 拉開間距 */
+  }
+
+  .swiper-pagination-bullet {
+    width: 35px;
+    height: 7px;
+    border-radius: 0; /* 長方形 */
+    background: var(--color-primary-1);
+    opacity: 0.5;
+    transition: opacity 0.3s, background 0.3s;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--primary);
+  }
+
+  /* -------- Navigation 箭頭 -------- */
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-surface-2);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    left: auto; /* 清除預設位置 */
+  }
+
+  .swiper-button-next {
+    right: 12px; /* 貼最右邊 */
+  }
+
+  .swiper-button-prev {
+    right: 56px; /* 在 next 左邊一點 */
+  } 
+}
+

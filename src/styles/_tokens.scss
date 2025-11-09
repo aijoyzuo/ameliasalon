@@ -1,0 +1,70 @@
+
+//  Colors
+$color-primary-1: #A67858;
+$color-primary-2: #5E4A3B;
+$color-primary-3: #3B070B;
+
+$color-surface-1: #000000;
+$color-surface-2: #ffffff;
+$color-surface-3: #E1E1E1;
+$color-surface-4: #B9B9B9;
+
+
+// Fonts
+$font-family-base: 'Noto Sans', system-ui, sans-serif;
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-regular: 400;
+
+
+// Font Sizes – Desktop Default (PC)
+$fs-display: 59px;
+$fs-headline: 32px;
+$fs-title: 24px;
+$fs-body: 20px;
+$fs-label: 14px;
+
+
+// Line Heights 
+$lh-display: 40px;  // 40pt
+$lh-headline: 40px; // 40pt
+$lh-title: 40px;    // 40pt
+$lh-body: 40px;     // 40pt
+$lh-label: 28px;    // 28pt
+
+
+//  Letter Spacing
+$ls-0: 0px;
+$ls-05pt: 0.67px;
+$ls-01pt: 0.13px; // 行動版 label 用到
+
+
+// Typography for Tablet
+$fs-display-tablet: 48px;
+$fs-headline-tablet: 24px;
+$fs-title-tablet: 20px;
+$fs-body-tablet: 16px;
+$fs-label-tablet: 12px;
+
+$lh-display-tablet: 25px; // 25pt
+$lh-headline-tablet: 33px;
+$lh-title-tablet: 33px;
+$lh-body-tablet: 33px;
+$lh-label-tablet: 20px; // 20pt
+
+
+//  Typography for Mobile
+$fs-display-mobile: 40px;
+$fs-headline-mobile: 20px;
+$fs-title-mobile: 16px;
+$fs-body-mobile: 12px;
+$fs-label-mobile: 10px;
+
+$lh-display-mobile: 40px; // 40pt
+$lh-headline-mobile: 25px; // 25pt
+$lh-title-mobile: 33px;
+$lh-body-mobile: 20px; // 20pt
+$lh-label-mobile: 27px;
+
+$ls-body-mobile: 0.5px; // 0.5pt
+$ls-label-mobile: 0.1px; // 0.1pt

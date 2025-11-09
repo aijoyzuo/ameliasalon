@@ -1,0 +1,36 @@
+// 1. 
+@import './tokens';
+
+// 2.
+$primary:   $color-primary-1;
+$secondary: $color-primary-2;
+$accent:    $color-primary-3; 
+
+$body-color:$color-surface-1;
+$surface:   $color-surface-2;
+$body-bg:   $color-surface-3;
+$font-family-sans-serif: $font-family-base;
+
+:root {
+  --color-primary-1: #{$color-primary-1};
+  --color-primary-2: #{$color-primary-2};
+  --color-primary-3: #{$color-primary-3};
+
+  /* Surface / Neutral Palette */
+  --color-surface-1: #{$color-surface-1};
+  --color-surface-2: #{$color-surface-2};
+  --color-surface-3: #{$color-surface-3};
+  --color-surface-4: #{$color-surface-4};
+}
+
+// 3. 
+@import "bootstrap/scss/bootstrap";
+
+// 4.
+@import './base';
+@import './components';
+@import './home-hero';
+@import './interiorCarousel';
+@import './home-about';
+
+
