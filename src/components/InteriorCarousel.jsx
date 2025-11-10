@@ -35,6 +35,7 @@ export default function InteriorCarousel({ prevBtnSelector, nextBtnSelector }) {
           keyboard={{ enabled: true }}
           watchOverflow={false}
           loop={true}
+          speed={600} 
           breakpoints={{ 1920: { spaceBetween: 24 } }}
         >
           <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/home/insideSalon-1.png'} alt="沙龍內部1" /></SwiperSlide>
