@@ -1,5 +1,5 @@
 /* ============ About Env ============ */
-.about__env {
+.about__env {  
   position: relative;
   overflow-x: hidden;
 
@@ -85,6 +85,7 @@
     background: var(--color-primary-1);
     opacity: 0.5;
     transition: opacity 0.3s, background 0.3s;
+    box-shadow: 0 4px 2.6px rgba(0, 0, 0, 0.5);
   }
 
   .swiper-pagination-bullet-active {
@@ -93,17 +94,106 @@
   }
 }
 
+/* ============ 按鈕位置 ============ */
+.about__env-right {
+  position: relative;
+  overflow: visible;
+  /* ✅ 不裁掉 overlay */
+  --vw-gap: calc((100vw - 100%) * 0.5);
+  --edge-pad: 2px;
+}
+
+
+.about__env-right .edge-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  right: calc(var(--vw-gap) * -0.5);
+  pointer-events: none;
+  z-index: 50;
+}
+
+@media (min-width: 980px) {
+  .about__env-right .edge-overlay {
+    right: calc(var(--vw-gap) * -0.6);
+  }
+}
+
+@media (min-width: 1200px) {
+  .about__env-right .edge-overlay {
+    right: calc(var(--vw-gap) * 0);
+  }
+}
+
+@media (min-width: 1920px) {
+  .about__env-right .edge-overlay {
+    right: calc(var(--vw-gap) * -0.6);
+  }
+}
+
+/* 右鍵 */
+.about__env-right .edge-overlay .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: var(--edge-pad); 
+  left: auto;
+  pointer-events: auto;
+  z-index: 100;
+}
+
+/* 左鍵 */
+.about__env-right .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: clamp(8px, 2vw, 24px);
+  right: auto;
+  z-index: 100;
+}
+
+/* 防溢出*/
+.swiper-button-lock {
+  display: flex !important;
+}
+
+.swiper-button-disabled {
+  display: flex !important;
+  opacity: .35;
+  pointer-events: none;
+}
+
+
+@media (min-width: 1200px) {
+  .about__env-right {
+    --edge-pad: 1px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .about__env-right {
+    --edge-pad: 0px;
+  }
+}
+
+
 /* ============ Navigation 造型（共用） ============ */
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  display: none !important;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   z-index: 10;
-  width: 40px;
-  height: 40px;
+  width: 24px !important;
+  height: 24px !important;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: 2px !important;
   border: 2px solid var(--color-surface-2);
   box-sizing: border-box;
   color: var(--color-surface-2) !important;
@@ -116,7 +206,7 @@
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 20px;
+  font-size: 12px !important;
 }
 
 .swiper-button-prev:hover,
@@ -131,92 +221,18 @@
   transform: translateY(1px);
 }
 
-/* active（按下時）狀態 */
-// .swiper-button-prev:active,
-// .swiper-button-next:active {
-//   box-shadow:
-//     inset 0 6px 8px rgba(0, 0, 0, 0.35),
-//     0 2px 4px rgba(0, 0, 0, 0.25);
-//   transform: translateY(2px);
-// }
 
-
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
 
   .swiper-button-prev,
   .swiper-button-next {
-    width: 30px;
-    height: 30px;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 4px !important;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 12px !important;
   }
 }
-
-/* ============ 按鈕位置 ============ */
-.about__env-right {
-  position: relative;
-  overflow: visible; /* ✅ 不裁掉 overlay */
-  --vw-gap: calc((100vw - 100%) * 0.5); /* 容器外側空隙的一半 */
-  --edge-pad: 2px;                      /* 想再貼邊就調成 1px/0px */
-}
-
-/* 拉出一個跨到螢幕左右邊的定位層，放在 Swiper 後面（DOM 順序重要） */
-.about__env-right .edge-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  
-  right: calc(var(--vw-gap) * -1);
-  pointer-events: none;   /* 不擋到底下 */
-  z-index: 50;            /* ✅ 疊在輪播上方 */
-  /* ✅ 980 以上 */
-@media (min-width: 980px) {
-  .about__env-right .edge-overlay {
-    right: calc(var(--vw-gap) * -0.5);
-  }
-}
-
-/* ✅ 1200 以上 */
-@media (min-width: 1200px) {
-  .about__env-right .edge-overlay {
-    right: calc(var(--vw-gap) * 0);
-  }
-}
-
-/* ✅ 1920 以上 */
-@media (min-width: 1920px) {
-  .about__env-right .edge-overlay {
-    right: calc(var(--vw-gap) * 2.4);
-  }
-}
-}
-
-/* 右鍵放在 overlay 裡，確保永遠貼「螢幕右邊」 */
-.about__env-right .edge-overlay .swiper-button-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: var(--edge-pad); /* ← 距離螢幕右邊 */
-  left: auto;
-  pointer-events: auto;   /* 只有按鈕可點 */
-  z-index: 100;           /* ✅ 比圖片還高，避免被蓋住 */
-  
-}
-
-/* 左鍵維持原本（容器內定位即可） */
-.about__env-right .swiper-button-prev {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: clamp(8px, 2vw, 24px);
-  right: auto;
-  z-index: 100;
-}
-
-/* 讓 Swiper 不把沒溢出時的按鈕隱藏（保險） */
-.swiper-button-lock { display: flex !important; }
-.swiper-button-disabled { display: flex !important; opacity: .35; pointer-events: none; }
-
-/* 需要的話在大螢幕再更貼 */
-@media (min-width: 1200px) { .about__env-right { --edge-pad: 1px; } }
-@media (min-width: 1920px) { .about__env-right { --edge-pad: 0px; } }
-
-.about__env-right .edge-overlay { outline: 1px dashed rgba(255,0,0,.4); }

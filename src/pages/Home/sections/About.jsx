@@ -1,7 +1,7 @@
 import InteriorCarousel from "../../../components/InteriorCarousel";
 export default function About() {
     return (
-        <section className="">
+        <section>
             <div className="about">
                 <div className="container">
                     <div className="about__text">
@@ -20,7 +20,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <div className="about__env">
+            <div className="about__env my-3">
                 <div className="container">
                     <div className="row about__env-row align-items-center">
                         <div className="col-12 col-lg-3 about__env-left">
@@ -34,9 +34,9 @@ export default function About() {
                                     nextBtnSelector=".about__env-right .nav-next"
                                 />
                             </div>
-                            <button className="swiper-button-prev nav-prev" aria-label="上一張"></button>
+                            <button className="swiper-button-prev nav-prev" aria-label="上一張"> <i class="bi bi-chevron-left"></i></button>
                             <div className="edge-overlay">
-                                <button className="swiper-button-next  nav-next" aria-label="下一張"></button>
+                                <button className="swiper-button-next  nav-next" aria-label="下一張"> <i class="bi bi-chevron-right"></i></button>
                             </div>
                         </div>
                     </div>

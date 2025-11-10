@@ -25,7 +25,7 @@ export default function InteriorCarousel({ prevBtnSelector, nextBtnSelector }) {
 
   return (
     <div className="interior-carousel">
-      <div className="carousel-viewport">
+      <div className="carousel-viewport mb-3">
         <Swiper
           modules={[Navigation, Pagination, Keyboard]}
           onSwiper={(s) => (swiperRef.current = s)}
