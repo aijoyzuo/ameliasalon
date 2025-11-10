@@ -29,35 +29,3 @@
     }
 }
 
-.about__env {
-    position: relative;
-    // height: 972px;
-    overflow-x: hidden;
-
-    &-row {
-        position: relative;
-    }
-
-    &-right {
-        position: relative;
-        padding-left: 0;
-        padding-right: 0;
-    }
-   
-
-    @media (min-width: 768px) and (max-width: 1919.98px) {
-        // height: 681px;
-        padding-top: 35px;
-    }
-
-    @media (max-width: 767.98px) {
-        // height: 396px;
-    }
-}
-
-  .about__carousel {
-    position: relative;
-    width: 100vw; /* 滿版寬度 */
-    margin-right: calc((100vw - 100%) / 2); /* ✅ 從右邊推出去 */
-    overflow: hidden;
-  }

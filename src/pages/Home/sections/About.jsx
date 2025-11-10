@@ -29,8 +29,13 @@ export default function About() {
                         </div>
                         <div className="col-12 col-lg-9 about__env-right">
                             <div className="about__carousel">
-                                <InteriorCarousel />
+                                <InteriorCarousel
+                                    prevBtnSelector=".about__env-right .nav-prev"
+                                    nextBtnSelector=".about__env-right .nav-next"
+                                />
                             </div>
+                            <button className="swiper-button-prev nav-prev" aria-label="上一張"></button>
+                            <button className="swiper-button-next nav-next" aria-label="下一張"></button>
                         </div>
                     </div>
                 </div>
