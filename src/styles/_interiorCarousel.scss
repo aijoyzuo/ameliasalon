@@ -150,24 +150,55 @@
   }
 }
 
-/* ============ Navigation 位置（外掛在 .about__env-right） ============ */
-/* ✔ 把按鈕放在 .about__env-right，避開 .about__carousel 的 overflow: hidden */
-.about__env-right .swiper-button-prev,
-.about__env-right .swiper-button-next {
+/* ============ 按鈕位置 ============ */
+.about__env-right {
+  position: relative;
+  /* 這裡的 % 指的是 .about__env-right 的寬；vw 是螢幕寬 */
+  --vw-gap: calc((100vw - 100%) * 0.5); /* 右邊（也是左邊）外側空隙 */
+  --edge-pad:48px;                      /* 想多留一點就改這裡 */
+}
+
+/* 這層把可點擊區延伸到「螢幕兩側」 */
+.about__env-right .edge-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* 從欄寬往外各延伸到螢幕邊 */
+  left:  calc(var(--vw-gap) * -1);
+  right: calc(var(--vw-gap) * -1);
+  pointer-events: none; /* 避免遮住下方輪播 */
+}
+
+/* 垂直置中仍以圖片區塊高度為準（edge-overlay 跟著父層同高） */
+.about__env-right .edge-overlay .swiper-button-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  right: var(--edge-pad); /* ★ 真正貼「螢幕右邊」 */
+  left: auto;
+  pointer-events: auto;   /* 讓按鈕可點 */
+  z-index: 10;
 }
 
+/* 你的左鍵維持原本規則 */
 .about__env-right .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   left: clamp(8px, 2vw, 24px);
+  right: auto;
 }
 
-.about__env-right .swiper-button-next {
-  right: clamp(8px, 2vw, 24px);
+/* 需要更貼就把 edge-pad 降到 1px 或 0px；也可分斷點微調 */
+@media (min-width: 1200px) {
+  .about__env-right { --edge-pad: 1px; }
+}
+@media (min-width: 1920px) {
+  .about__env-right { --edge-pad: 0px; }
 }
 
-/* （可選）保底：避免主題把沒溢出的狀態隱藏 */
+
+/* 防溢出 */
 .swiper-button-lock {
   display: flex !important;
 }

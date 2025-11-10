@@ -35,7 +35,9 @@ export default function About() {
                                 />
                             </div>
                             <button className="swiper-button-prev nav-prev" aria-label="上一張"></button>
-                            <button className="swiper-button-next nav-next" aria-label="下一張"></button>
+                            <div className="edge-overlay">
+                                <button className="swiper-button-next  nav-next" aria-label="下一張"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
