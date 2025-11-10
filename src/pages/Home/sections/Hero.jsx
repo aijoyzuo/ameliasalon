@@ -23,13 +23,13 @@ export default function Hero() {
           <div className="col-6 col-lg-7">
             <div className="hero__portfolio">
               <img
-                src="/images/hero-1.png"
-                alt=""
+                src={process.env.PUBLIC_URL +'/images/home/hero-1.png'}
+                alt="hero-1"
                 className="hero__photo hero__photo--back"
               />
               <img
-                src="/images/hero-2.png"
-                alt=""
+                src={process.env.PUBLIC_URL +'/images/home/hero-2.png'}
+                alt="hero-2"
                 className="hero__photo hero__photo--front"
               />
             </div>

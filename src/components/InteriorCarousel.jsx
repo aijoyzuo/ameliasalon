@@ -21,9 +21,9 @@ export default function InteriorCarousel() {
                     1920: { slidesPerView: 1.9, spaceBetween: 24 }
                 }}
             >
-                <SwiperSlide><img src="/images/insideSalon-1.png" className='interiorCarousel__img' alt="沙龍內部1" /></SwiperSlide>
-                <SwiperSlide><img src="/images/insideSalon-2.png" className='interiorCarousel__img' alt="沙龍內部2" /></SwiperSlide>
-                <SwiperSlide><img src="/images/insideSalon-3.png" className='interiorCarousel__img' alt="沙龍內部3" /></SwiperSlide>
+                <SwiperSlide><img src={process.env.PUBLIC_URL +'/images/home/insideSalon-1.png'} className='interiorCarousel__img' alt="沙龍內部1" /></SwiperSlide>
+                <SwiperSlide><img src={process.env.PUBLIC_URL +'/images/home/insideSalon-2.png'} className='interiorCarousel__img' alt="沙龍內部2" /></SwiperSlide>
+                <SwiperSlide><img src={process.env.PUBLIC_URL +'/images/home/insideSalon-3.png'} className='interiorCarousel__img' alt="沙龍內部3" /></SwiperSlide>
             </Swiper>
         </div>
     );

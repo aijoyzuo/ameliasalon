@@ -6,7 +6,7 @@ export default function Footer() {
                     <div>
                         <a className="navbar-brand d-flex align-items-center" href="/" title="Amelia Salon">
                             <img
-                                src="/images/LOGOBig.png"
+                                src={process.env.PUBLIC_URL +'/images/LOGOBig.png'}
                                 alt="Amelia Salon Logo"
                                 className="footer__logo"
                             />

@@ -6,7 +6,7 @@ export default function Header() {
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/" title="Amelia Salon">
           <img
-            src="/images/LOGOSmall.png"
+            src={process.env.PUBLIC_URL +'/images/LOGOSmall.png'}
             alt="Amelia Salon Logo"
             className="header__logo"  
           />
@@ -25,7 +25,7 @@ export default function Header() {
         >
           
           <img
-            src="/images/icons/menu.png"
+            src={process.env.PUBLIC_URL +'/images/icons/menu.png'}
             alt="Menu"
             className="header__menu-icon"
           />

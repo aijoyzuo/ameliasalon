@@ -1,6 +1,6 @@
 .about {
     height: 500px;
-    background-image: url("../assets/tools.png");
+    background-image: url("../assets/home/tools.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,7 +11,7 @@
 
     @media (max-width: 767.98px) {
         height: 348px;
-        background-image: url("../assets/tools2.png");
+        background-image: url("../assets/home/tools2.png");
         background-size: 100% 100%;
     }
 }
