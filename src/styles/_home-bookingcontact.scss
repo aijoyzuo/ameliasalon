@@ -1,0 +1,13 @@
+.bookingcontact__icon{
+    width: 60px;
+    height: 60px;
+     @media (min-width: 768px) and (max-width: 1919.98px) {
+        width: 47px;
+    height: 47px;
+    }
+
+    @media (max-width: 767.98px) {
+        width: 32px;
+    height: 32px;
+    }
+}
