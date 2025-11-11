@@ -13,7 +13,7 @@ export default function Footer() {
                             <span className="visually-hidden">Amelia Salon</span>
                         </a>
                     </div>
-                    <div className="footer__text d-flex justify-content-center flex-column flex-md-row gap-md-1">
+                    <div className="footer__text d-flex justify-content-center flex-column flex-md-row gap-0 gap-md-1">
                         <p className="typo-label">服務條款及隱私保護政策</p>
                         <p className="typo-label">Copyright © 2024 ;Amelia Salon 版權所有</p>
                     </div>
