@@ -13,12 +13,12 @@ export default function ServicesSection() {
                 <span className="typo-body" style={{ color: 'var(--color-surface-1)' }}>Services</span>
                 <h2 className="typo-headline" style={{ color: 'var(--color-primary-1)' }}>服務介紹</h2>
 
-                <div className="stagger-wrap">
+                <div className="services__wrap mt-3">
                     {services.map((s) => (
-                        <article key={s.id} className="service position-relative">
-                            <img src={s.img} alt={s.title} className="service-img img-fluid w-100" />
-                            <div className="note card shadow-sm rounded-0">
-                                <div className="card-body d-flex flex-column justify-content-between text-center p-3">
+                        <article key={s.id} className="services__article position-relative">
+                            <img src={s.img} alt={s.title} className="services__img" />
+                            <div className="services__card card shadow-sm rounded-0">
+                                <div className="card-body d-flex flex-column justify-content-center gap-1 gap-md-3 text-center p-3">
                                     <h5 className="card-title typo-title" style={{ color: 'var(--color-primary-3)', fontWeight: 600 }}>{s.title}</h5>
                                     <p className="card-text mb-0 typo-body" style={{ color: 'var(--color-primary-1)' }}>{s.desc}</p>
                                 </div>

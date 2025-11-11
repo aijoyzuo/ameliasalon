@@ -1,14 +1,20 @@
 /* 基本視覺 */
-.service {
+.services {
     position: relative;
+    overflow: hidden;
 }
 
-.service-img {
+.services__img {
   height: 725px;
   width: calc(725px * 3 / 4) !important; /* 3:4 直式比例 */
   object-fit: cover;
 
-  @media (min-width: 768px) and (max-width: 1919.98px) {
+ @media (min-width: 1200px) and (max-width: 1919.98px) {
+    height: 600px;
+    width: calc(600px * 3 / 4) !important;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199.98px) {
     height: 375px;
     width: calc(375px * 3 / 4) !important;
   }
@@ -19,109 +25,191 @@
   }
 }
 
+.services__article {
+    position: relative;
+}
 
-/* note 預設貼在圖片中央（之後視窗不同再覆蓋） */
-.note {
+/* 預設貼在圖片中央（之後視窗不同再覆蓋） */
+.services__card {
   position: absolute;
-  top: 50%;
+  top: 50%;  
   transform: translateY(-50%);
+  width: max-content; 
   max-width: 435px;
+  min-height: 250px;
   background: #fff;
   border: none;
   box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
 
   @media (min-width: 768px) and (max-width: 1919.98px) {
     max-width: 200px;
+    min-height: 135px;
   }
 
   @media (max-width: 767.98px) {
     max-width: 151px;
+    min-height: 105px;
   }
 }
 
 /* ============ 1920↑ 兩欄＋上下交錯（群組以 position-relative 為單位） ============ */
 @media (min-width: 1920px) {
-    .stagger-wrap {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem 4rem;
-        /* 行距/欄距 */
-        align-items: start;
-    }
+  :root {
+    --overlap-lg: 18rem;   /* 卡片壓進去多少 */
+    --stagger-lg: 25rem;   /* 垂直交錯的位移量 */
+  }
 
-    /* 左右欄指定 */
-    .service:nth-child(odd) {
-        grid-column: 1;
-    }
+  /* 兩欄 */
+  .services__wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem 8rem;
+    align-items: start;
+  }
+  .services__article:nth-child(odd)  { grid-column: 1; }
+  .services__article:nth-child(even) { grid-column: 2; }
 
-    .service:nth-child(even) {
-        grid-column: 2;
-    }
+  /* 垂直交錯（右欄往下些）——簡潔好控的版本 */  
+  .services__article:nth-child(4n+2) { margin-top: calc(var(--stagger-lg) * 1.50); }
+  .services__article:nth-child(4n+3) { margin-top: calc(var(--stagger-lg) * -0.50); }
+  .services__article:nth-child(4n+4) { margin-top: calc(var(--stagger-lg) * 1); }
+  
 
-    /* 右欄整體往下，做「上下交錯」 */
-    .service:nth-child(even) {
-        margin-top: 8rem;
-    }
-
-    /* note 左右交錯，微微突出 */
-    .service:nth-child(odd) .note {
-        right: -1.25rem;
-    }
-
-    .service:nth-child(even) .note {
-        left: -1.25rem;
-    }
+  /* 卡片只壓右邊 */
+  .services__article .services__card {
+    right: calc(-1 * var(--overlap-lg));
+    left: auto;
+  }
 }
 
-/* ============ 768–1919 直排，但做「平行交錯一點點」 ============ */
-@media (min-width: 768px) and (max-width: 1919.98px) {
-    .stagger-wrap {
-        display: block;
-    }
+@media (min-width: 1200px) and (max-width: 1919.98px) {
+  :root {
+    --img-h-md: 600px;
+    --img-w-md: calc(var(--img-h-md) * 3 / 4); /* 3:4 直式 */
+    --overlap-md: 1.25rem;  /* 卡片壓在圖片右邊的固定量 */
+    --space-md: 3rem;       /* 區塊垂直間距 */
+    --shift-md: 13rem;       /* 左右微移量（建議用 px 級） */
+    --safe-md: calc(var(--overlap-md) + var(--shift-md) + 12px); /* 兩側安全留白 */
+  }
 
-    .service {
-        margin-bottom: 5rem;
-    }
+  /* 讓整串內容以中線為基準，左右預留空間避免水平捲軸 */
+  .services__wrap {
+    display: block;
+    padding-left: var(--safe-md)+2px;
+    padding-right: var(--safe-md);
+  }
 
-    /* note 繼續置中，但左右小幅度位移，呈現平行交錯 */
-    .service:nth-child(odd) .note {
-        right: 12px;
-        transform: translateY(-50%) translateX(10px);
-    }
+  /* 每個項目本體先置中，寬度=圖片寬；之後再做左右微移 */
+  .services__article {
+    position: relative;
+    width: var(--img-w-md);
+    margin: 0 auto var(--space-md);
+    transform: none;
+  }
 
-    .service:nth-child(even) .note {
-        left: 12px;
-        transform: translateY(-50%) translateX(-10px);
-    }
+  /* 奇數往左、偶數往右（以中線微移） */
+  .services__article:nth-child(odd)  { transform: translateX(calc(-1 * var(--shift-md))); }
+  .services__article:nth-child(even) { transform: translateX(var(--shift-md)); }
+
+  /* 卡片：貼圖片右邊，壓入固定量（不受上面整體位移影響） */
+    .services__article .services__card {
+    left: calc(var(--img-w-md) - var(--overlap-md));
+    right: auto;
+  }
 }
 
-/* ============ 767↓ 直排，note 改為在圖片下方避免重疊 ============ */
+
+/* ============ 768–1919：以中線為基準，奇數往左、偶數往右 ============ */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  :root {
+    --img-h-md: 375px;
+    --img-w-md: calc(var(--img-h-md) * 3 / 4); /* 3:4 直式 */
+    --overlap-md: 1.25rem;  /* 卡片壓在圖片右邊的固定量 */
+    --space-md: 3rem;       /* 區塊垂直間距 */
+    --shift-md: 5rem;       /* 左右微移量（建議用 px 級） */
+    --safe-md: calc(var(--overlap-md) + var(--shift-md) + 12px); /* 兩側安全留白 */
+  }
+
+  /* 讓整串內容以中線為基準，左右預留空間避免水平捲軸 */
+  .services__wrap {
+    display: block;
+    padding-left: var(--safe-md)+5px;
+    padding-right: var(--safe-md);
+  }
+
+  /* 每個項目本體先置中，寬度=圖片寬；之後再做左右微移 */
+  .services__article {
+    position: relative;
+    width: var(--img-w-md);
+    margin: 0 auto var(--space-md);
+    transform: none;
+  }
+
+  /* 奇數往左、偶數往右（以中線微移） */
+  .services__article:nth-child(odd)  { transform: translateX(calc(-1 * var(--shift-md))); }
+  .services__article:nth-child(even) { transform: translateX(var(--shift-md)); }
+
+  /* 卡片：貼圖片右邊，壓入固定量（不受上面整體位移影響） */
+    .services__article .services__card {
+    left: calc(var(--img-w-md) - var(--overlap-md));
+    right: auto;
+  }
+}
+
+
+
+/* ============ 767↓：置中 + 明顯交錯(4rem) + 壓深固定 8rem ============ */
+/* ============ 767↓：置中 + 左右交錯 + 固定px淺壓，不整張覆蓋 ============ */
 @media (max-width: 767.98px) {
+  :root {
+    --img-h-sm: 250px;
+    --img-w-sm: calc(var(--img-h-sm) * 3 / 4); /* 3:4 圖片寬 ≈187.5px */
+    --space-sm: 24px;          /* 垂直間距 */
 
-    //   .note {
-    //     position: static;
-    //     transform: none;
-    //     margin-top: .75rem;
-    //     box-shadow: none;
-    //   }
-    .service {
-        margin-bottom: 2.5rem;
-    }
-}
+    --shift-sm: 4rem;          /* 交錯量：你要的 4rem */
+    --overlap-sm-px: 24px;     /* 卡片壓入固定 px（淺壓，絕不全覆蓋） */
+  }
 
-/* ============ 360↓ 其中兩組交換 img / note 的順序 ============ */
-/* 讓每組改成可重排的直向 flex */
-@media (max-width: 360px) {
-    .service {
-        display: flex;
-        flex-direction: column;
-        gap: .75rem;
-    }
+  /* 外層不推padding，避免被擠偏；也不要裁切卡片 */
+  .services__wrap { display:block; padding:0; overflow:visible; }
 
-    /* 指定要交換的組（這裡示範第 2、4 組） */
-    .service:nth-child(2) .note,
-    .service:nth-child(4) .note {
-        order: -1;
-        /* 讓 note 出現在 img 之前 */
-    }
+  /* 每張的可視寬 = 圖片寬 + 淺壓量；先置中再左右交錯 */
+  .services__article {
+    position: relative;
+    width: calc(var(--img-w-sm) + var(--overlap-sm-px));
+    margin: 0 auto var(--space-sm);
+    left: 50%;
+    transform: translateX(-50%); /* 基準置中 */
+  }
+
+  /* 左右交錯（在置中基準上再 ± 4rem） */
+  .services__article:nth-child(odd)  { transform: translateX(calc(-50% - var(--shift-sm))); }
+  .services__article:nth-child(even) { transform: translateX(calc(-50% + var(--shift-sm))); }
+
+  /* 圖片固定 3:4 */
+  .services__img {
+    display:block;
+    width: var(--img-w-sm);
+    height: var(--img-h-sm);
+    object-fit: cover;
+    margin:0;
+  }
+
+  /* 讓卡片只「淺壓」圖片邊緣，不會整張覆蓋 */
+  .services__card {
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width: max-content;         /* 以內容決定寬 */
+    max-width: 80vw;            /* 安全上限，避免過寬 */
+    box-sizing: border-box;
+  }
+
+  /* 奇數：圖片靠左，卡片從右邊「壓進來」 overlap-sm-px */
+  .services__article:nth-child(odd) .services__img  { margin-left: 0; }
+  .services__article:nth-child(odd) .services__card { left: calc(var(--img-w-sm) - var(--overlap-sm-px)); right:auto; }
+
+  /* 偶數：圖片向右挪出 overlap-sm-px 的空隙，卡片靠左邊「壓進來」 overlap-sm-px */
+  .services__article:nth-child(even) .services__img  { margin-left: var(--overlap-sm-px); }
+  .services__article:nth-child(even) .services__card { left: 0; right:auto; }
 }
