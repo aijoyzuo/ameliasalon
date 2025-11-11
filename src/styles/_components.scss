@@ -18,15 +18,15 @@
 }
 
 .header__logo {
-    height: 90px;
+    max-height: 90px;
     width: 100%;
 
     @media (min-width: 768px) and (max-width: 1919.98px) {
-        height: 58px;
+        max-height: 58px;
     }
 
     @media (max-width: 767.98px) {
-        height: 42px;
+        max-height: 42px;
     }
 }
 
@@ -67,15 +67,15 @@
 }
 
 .footer__logo {
-    height: 213px;
-    width: 100%;
+    max-height: 213px;
+    width: 100%;    
 
     @media (min-width: 768px) and (max-width: 1919.98px) {
-        height: 144px;
+        max-height: 144px;
     }
 
     @media (max-width: 767.98px) {
-        height: 108px;
+        max-height: 108px;
     }
 }
 
