@@ -1,0 +1,74 @@
+/* 基本視覺 */
+.service { position: relative; }
+.service-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover; 
+}
+
+/* note 預設貼在圖片中央（之後視窗不同再覆蓋） */
+.note {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 42ch; 
+  background: #fff;
+}
+
+/* ============ 1920↑ 兩欄＋上下交錯（群組以 position-relative 為單位） ============ */
+@media (min-width: 1920px) {
+  .stagger-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem 4rem; /* 行距/欄距 */
+    align-items: start;
+  }
+
+  /* 左右欄指定 */
+  .service:nth-child(odd)  { grid-column: 1; }
+  .service:nth-child(even) { grid-column: 2; }
+
+  /* 右欄整體往下，做「上下交錯」 */
+  .service:nth-child(even) { margin-top: 8rem; }
+
+  /* note 左右交錯，微微突出 */
+  .service:nth-child(odd)  .note { right: -1.25rem; }
+  .service:nth-child(even) .note { left:  -1.25rem; }
+}
+
+/* ============ 768–1919 直排，但做「平行交錯一點點」 ============ */
+@media (min-width: 768px) and (max-width: 1919.98px) {
+  .stagger-wrap { display: block; }
+  .service { margin-bottom: 5rem; }
+
+  /* note 繼續置中，但左右小幅度位移，呈現平行交錯 */
+  .service:nth-child(odd)  .note { right:  12px; transform: translateY(-50%) translateX(10px); }
+  .service:nth-child(even) .note { left:   12px; transform: translateY(-50%) translateX(-10px); }
+}
+
+/* ============ 767↓ 直排，note 改為在圖片下方避免重疊 ============ */
+@media (max-width: 767.98px) {
+  .note {
+    position: static;
+    transform: none;
+    margin-top: .75rem;
+    box-shadow: none;
+  }
+  .service { margin-bottom: 2.5rem; }
+}
+
+/* ============ 360↓ 其中兩組交換 img / note 的順序 ============ */
+/* 讓每組改成可重排的直向 flex */
+@media (max-width: 360px) {
+  .service {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  /* 指定要交換的組（這裡示範第 2、4 組） */
+  .service:nth-child(2) .note,
+  .service:nth-child(4) .note {
+    order: -1; /* 讓 note 出現在 img 之前 */
+  }
+}
