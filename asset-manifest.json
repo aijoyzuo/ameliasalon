@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ameliasalon/static/css/main.3e5eb9d3.css",
-    "main.js": "/ameliasalon/static/js/main.77049834.js",
+    "main.css": "/ameliasalon/static/css/main.aa69acde.css",
+    "main.js": "/ameliasalon/static/js/main.df6c747b.js",
     "static/media/salon.png": "/ameliasalon/static/media/salon.43a6b7e3d6fce8ae16b8.png",
     "static/media/tools.png": "/ameliasalon/static/media/tools.9babeb41dc5bdf71f389.png",
     "static/media/tools2.png": "/ameliasalon/static/media/tools2.9698275ed05d9d2ec606.png",
     "index.html": "/ameliasalon/index.html",
-    "main.3e5eb9d3.css.map": "/ameliasalon/static/css/main.3e5eb9d3.css.map",
-    "main.77049834.js.map": "/ameliasalon/static/js/main.77049834.js.map"
+    "main.aa69acde.css.map": "/ameliasalon/static/css/main.aa69acde.css.map",
+    "main.df6c747b.js.map": "/ameliasalon/static/js/main.df6c747b.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e5eb9d3.css",
-    "static/js/main.77049834.js"
+    "static/css/main.aa69acde.css",
+    "static/js/main.df6c747b.js"
   ]
 }
