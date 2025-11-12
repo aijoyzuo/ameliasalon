@@ -1,8 +1,6 @@
-import React from 'react';
-
 export default function Header() {
   return (
-    <nav className="header navbar navbar-expand-lg navbar-dark">
+    <nav className="header navbar navbar-expand-md navbar-dark">
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/" title="Amelia Salon">
           <img

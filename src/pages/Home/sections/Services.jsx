@@ -17,7 +17,7 @@ export default function ServicesSection() {
                     {services.map((s) => (
                         <article key={s.id} className="services__article position-relative">
                             <img src={s.img} alt={s.title} className="services__img" />
-                            <div className="services__card card shadow-sm rounded-0">
+                            <div className="services__card card rounded-0">
                                 <div className="card-body d-flex flex-column justify-content-center gap-1 gap-md-3 text-center p-3">
                                     <h5 className="card-title typo-title" style={{ color: 'var(--color-primary-3)', fontWeight: 600 }}>{s.title}</h5>
                                     <p className="card-text mb-0 typo-body" style={{ color: 'var(--color-primary-1)' }}>{s.desc}</p>
