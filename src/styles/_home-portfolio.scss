@@ -5,11 +5,20 @@
 
 .portfolio__image-scroll-container {
   display: flex;
-  gap: 32px;      /* 每張圖片固定間距 */
+  gap: 45px;
   overflow-x: auto;
   scroll-behavior: smooth;
-}
 
+  max-width: 100%;
+  white-space: nowrap;
+
+  /* 隱藏捲軸 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.portfolio__image-scroll-container::-webkit-scrollbar {
+  display: none;
+}
 
 /* 高度主導、維持比例 */
 .portfolio__img {
@@ -17,35 +26,39 @@
   height: 455px;
   width: auto;
   object-fit: contain;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  /* 陰影現在會正常顯示 */
 }
 
-/* 平板 */
-@media (max-width: 1919px) and (min-width: 768px) {
-  .portfolio__img { height: 335px; }
-}
 
-/* 手機 */
-@media (max-width: 767px) {
-  .portfolio__img { height: 173px; }
 
-}
 
-/* 讓文字 + 線同一排，垂直置中 */
 .portfolio__title {  
   width: 70%;
   margin-left: auto;
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 12px; /* 文字跟線的間距，可調 */
+  gap: 4px;
 }
 
-/* 客製 hr */
 .portfolio__hr {
   align-self: stretch;
   height: 4px;
   border: none; 
   margin: 0;
-  background-color: var(--color-primary-2); /* ★ 上色 */
-  opacity: 1
+  background-color: var(--color-primary-2);
+  opacity: 1;
+}
+
+/* 平板 */
+@media (max-width: 1919px) and (min-width: 768px) {
+  .portfolio__img { height: 335px; }
+  .portfolio__image-scroll-container{gap:20px;}
+}
+
+/* 手機 */
+@media (max-width: 767px) {
+  .portfolio__img { height: 173px; }
+  .portfolio__image-scroll-container{gap:10px;}
+  .portfolio__title {width: 90%;}
 }

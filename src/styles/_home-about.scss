@@ -3,7 +3,7 @@
     background-image: url("../assets/home/tools.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;    
 
     @media (min-width: 768px) and (max-width: 1919.98px) {
         height: 304px;
@@ -28,4 +28,9 @@
         padding-top: 20px;
     }
 }
-
+.about__env {
+  border-bottom: 2px solid var(--color-surface-4);
+  @media (min-width: 768px) and (max-width: 1919.98px) {
+       border-bottom: 2px solid var(--color-primary-1);
+    }
+}

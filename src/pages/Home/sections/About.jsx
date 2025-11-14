@@ -20,7 +20,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <div className="about__env my-3">
+            <div className="about__env my-3 my-lg-5 pb-3 pb-lg-5">
                 <div className="container">
                     <div className="row about__env-row align-items-center">
                         <div className="col-12 col-lg-3 about__env-left">
