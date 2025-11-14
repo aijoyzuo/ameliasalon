@@ -5,18 +5,14 @@
 
 .portfolio__image-scroll-container {
   display: flex;
-  gap: 16px;      /* 每張圖片固定間距 */
+  gap: 32px;      /* 每張圖片固定間距 */
   overflow-x: auto;
   scroll-behavior: smooth;
 }
 
-/* 每張圖片的「外框」固定寬度 */
-.portfolio__img-box {
-  flex: 0 0 300px;     /* 每張佔 300px 可調整 */
-}
 
 /* 高度主導、維持比例 */
-.portfolio__img-box img {
+.portfolio__img {
   display: block;
   height: 455px;
   width: auto;
@@ -25,29 +21,31 @@
 
 /* 平板 */
 @media (max-width: 1919px) and (min-width: 768px) {
-  .portfolio__img-box img { height: 335px; }
-  .portfolio__img-box { flex: 0 0 260px; } /* 依需求調整 */
+  .portfolio__img { height: 335px; }
 }
 
 /* 手機 */
 @media (max-width: 767px) {
-  .portfolio__img-box img { height: 173px; }
-  .portfolio__img-box { flex: 0 0 150px; } /* 可調整 */
+  .portfolio__img { height: 173px; }
+
 }
 
 /* 讓文字 + 線同一排，垂直置中 */
-.portfolio__title {
+.portfolio__title {  
+  width: 70%;
+  margin-left: auto;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  align-items: center;
+  align-items: start;
   gap: 12px; /* 文字跟線的間距，可調 */
 }
 
 /* 客製 hr */
 .portfolio__hr {
   align-self: stretch;
-  height: 5px;              /* 線的粗細 */
-  background-color: rgba(0, 0, 0, 0.4); /* 線的顏色，可換成變數 */
-  margin: 0;                /* 拿掉預設上下 margin，不然會影響垂直對齊 */
+  height: 4px;
+  border: none; 
+  margin: 0;
+  background-color: var(--color-primary-2); /* ★ 上色 */
+  opacity: 1
 }
