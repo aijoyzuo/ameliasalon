@@ -34,9 +34,9 @@ export default function About() {
                                     nextBtnSelector=".about__env-right .nav-next"
                                 />
                             </div>
-                            <button className="swiper-button-prev nav-prev" aria-label="上一張"> <i class="bi bi-chevron-left"></i></button>
+                            <button className="swiper-button-prev nav-prev" aria-label="上一張"> <i className="bi bi-chevron-left"></i></button>
                             <div className="edge-overlay">
-                                <button className="swiper-button-next  nav-next" aria-label="下一張"> <i class="bi bi-chevron-right"></i></button>
+                                <button className="swiper-button-next  nav-next" aria-label="下一張"> <i className="bi bi-chevron-right"></i></button>
                             </div>
                         </div>
                     </div>

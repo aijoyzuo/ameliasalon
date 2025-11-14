@@ -1,16 +1,53 @@
-.image-scroll-container {
-  overflow-x: auto;           /* 開啟橫向滾動 */
-  overflow-y: hidden;
-  scroll-behavior: smooth;    /* 滑動時平順 */
-  -webkit-overflow-scrolling: touch; /* 手機上支援滑動 */
-  scrollbar-width: none;      /* Firefox 隱藏卷軸 */
-}
-.image-scroll-container::-webkit-scrollbar {
-  display: none;              /* Chrome / Safari 隱藏卷軸 */
+.portfolio__row-nogutter {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-.image-scroll-container img {
-  flex: 0 0 auto;             /* 讓圖片不被壓縮 */
-  width: 300px;               /* 每張圖片固定寬度，可依需求調整 */
-  border-radius: 8px;
+.portfolio__image-scroll-container {
+  display: flex;
+  gap: 16px;      /* 每張圖片固定間距 */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+/* 每張圖片的「外框」固定寬度 */
+.portfolio__img-box {
+  flex: 0 0 300px;     /* 每張佔 300px 可調整 */
+}
+
+/* 高度主導、維持比例 */
+.portfolio__img-box img {
+  display: block;
+  height: 455px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* 平板 */
+@media (max-width: 1919px) and (min-width: 768px) {
+  .portfolio__img-box img { height: 335px; }
+  .portfolio__img-box { flex: 0 0 260px; } /* 依需求調整 */
+}
+
+/* 手機 */
+@media (max-width: 767px) {
+  .portfolio__img-box img { height: 173px; }
+  .portfolio__img-box { flex: 0 0 150px; } /* 可調整 */
+}
+
+/* 讓文字 + 線同一排，垂直置中 */
+.portfolio__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 12px; /* 文字跟線的間距，可調 */
+}
+
+/* 客製 hr */
+.portfolio__hr {
+  align-self: stretch;
+  height: 5px;              /* 線的粗細 */
+  background-color: rgba(0, 0, 0, 0.4); /* 線的顏色，可換成變數 */
+  margin: 0;                /* 拿掉預設上下 margin，不然會影響垂直對齊 */
 }
