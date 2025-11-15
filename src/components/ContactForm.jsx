@@ -93,7 +93,7 @@ export default function ContactForm() {
                 {errors.message && <p className="error">{errors.message}</p>}
             </div>
             <div className="text-center text-md-end">
-                <button type="submit" className="btn  buttonCostum typo-headline">送出預約</button>
+                <button type="submit" className="btn contact__buttonCostum">送出預約</button>
             </div>
         </form>
     );
