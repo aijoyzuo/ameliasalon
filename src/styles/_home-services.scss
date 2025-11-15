@@ -1,4 +1,3 @@
-/* 基本視覺 */
 .services {
     position: relative;
     overflow: hidden;
@@ -6,7 +5,7 @@
 
 .services__img {
   height: 725px;
-  width: calc(725px * 3 / 4) !important; /* 3:4 直式比例 */
+  width: calc(725px * 3 / 4) !important; 
   object-fit: cover;
 
  @media (min-width: 1200px) and (max-width: 1919.98px) {
@@ -29,7 +28,7 @@
     position: relative;
 }
 
-/* 預設貼在圖片中央（之後視窗不同再覆蓋） */
+/* 預設貼在圖片中央 */
 .services__card {
   position: absolute;
   top: 50%;  
@@ -53,11 +52,11 @@
   }
 }
 
-/* ============ 1920↑ 兩欄＋上下交錯（群組以 position-relative 為單位） ============ */
+/* ============ 1920↑ 兩欄＋上下交錯 ============ */
 @media (min-width: 1920px) {
   :root {
-    --overlap-lg: 18rem;   /* 卡片壓進去多少 */
-    --stagger-lg: 25rem;   /* 垂直交錯的位移量 */
+    --overlap-lg: 18rem;   
+    --stagger-lg: 25rem;  
   }
 
   /* 兩欄 */
@@ -70,7 +69,7 @@
   .services__article:nth-child(odd)  { grid-column: 1; }
   .services__article:nth-child(even) { grid-column: 2; }
 
-  /* 垂直交錯（右欄往下些）——簡潔好控的版本 */  
+  /* 垂直交錯 */  
   .services__article:nth-child(4n+2) { margin-top: calc(var(--stagger-lg) * 1.50); }
   .services__article:nth-child(4n+3) { margin-top: calc(var(--stagger-lg) * -0.50); }
   .services__article:nth-child(4n+4) { margin-top: calc(var(--stagger-lg) * 1); }
@@ -86,21 +85,21 @@
 @media (min-width: 1200px) and (max-width: 1919.98px) {
   :root {
     --img-h-md: 600px;
-    --img-w-md: calc(var(--img-h-md) * 3 / 4); /* 3:4 直式 */
-    --overlap-md: 1.25rem;  /* 卡片壓在圖片右邊的固定量 */
-    --space-md: 3rem;       /* 區塊垂直間距 */
-    --shift-md: 10rem;       /* 左右微移量（建議用 px 級） */
-    --safe-md: calc(var(--overlap-md) + var(--shift-md) + 12px); /* 兩側安全留白 */
+    --img-w-md: calc(var(--img-h-md) * 3 / 4); 
+    --overlap-md: 1.25rem;  
+    --space-md: 3rem;       
+    --shift-md: 10rem;      
+    --safe-md: calc(var(--overlap-md) + var(--shift-md) + 12px); 
   }
 
-  /* 讓整串內容以中線為基準，左右預留空間避免水平捲軸 */
+  
   .services__wrap {
     display: block;
     padding-left: var(--safe-md) ;
     padding-right: var(--safe-md);
   }
 
-  /* 每個項目本體先置中，寬度=圖片寬；之後再做左右微移 */
+  
   .services__article {
     position: relative;
     width: var(--img-w-md);
@@ -108,11 +107,11 @@
     transform: none;
   }
 
-  /* 奇數往左、偶數往右（以中線微移） */
+  /* 奇數往左、偶數往右*/
   .services__article:nth-child(odd)  { transform: translateX(calc(-1 * var(--shift-md))); }
   .services__article:nth-child(even) { transform: translateX(var(--shift-md)); }
 
-  /* 卡片：貼圖片右邊，壓入固定量（不受上面整體位移影響） */
+  /* 卡片：貼圖片右邊，壓入固定量*/
     .services__article .services__card {
     left: calc(var(--img-w-md) - var(--overlap-md));
     right: auto;
@@ -120,15 +119,15 @@
 }
 
 
-/* ============ 768–1919：以中線為基準，奇數往左、偶數往右 ============ */
+/* ============ 768–1919：以中線為基準============ */
 @media (min-width: 768px) and (max-width: 1199.98px) {
   :root {
     --img-h-md: 375px;
-    --img-w-md: calc(var(--img-h-md) * 3 / 4); /* 3:4 直式 */
-    --overlap-md: 1.25rem;  /* 卡片壓在圖片右邊的固定量 */
-    --space-md: 3rem;       /* 區塊垂直間距 */
-    --shift-md: 5rem;       /* 左右微移量（建議用 px 級） */
-    --safe-md: calc(var(--overlap-md) + var(--shift-md) + 12px); /* 兩側安全留白 */
+    --img-w-md: calc(var(--img-h-md) * 3 / 4); 
+    --overlap-md: 1.25rem;  
+    --space-md: 3rem;       
+    --shift-md: 5rem;      
+    --safe-md: calc(var(--overlap-md) + var(--shift-md) + 12px); 
   }
 
   /* 讓整串內容以中線為基準，左右預留空間避免水平捲軸 */
@@ -150,7 +149,7 @@
   .services__article:nth-child(odd)  { transform: translateX(calc(-1 * var(--shift-md))); }
   .services__article:nth-child(even) { transform: translateX(var(--shift-md)); }
 
-  /* 卡片：貼圖片右邊，壓入固定量（不受上面整體位移影響） */
+  /* 卡片：貼圖片右邊，壓入固定量 */
     .services__article .services__card {
     left: calc(var(--img-w-md) - var(--overlap-md));
     right: auto;
@@ -159,26 +158,26 @@
 
 
 
-/* ============ ≤767：article 真置中；img+card 一起交錯；重疊奇偶一致 16px ============ */
+/* ============ ≤767：article 真置中============ */
 @media (max-width: 767.98px) {
   :root {
     --img-h-sm: 250px;
-    --img-w-sm: calc(var(--img-h-sm) * 3 / 4);  /* 圖片寬 */
-    --space-sm: 24px;                            /* 垂直間距 */
-    --shift-sm: 1.5rem;                          /* 交錯量 */
-    --reserve-sm: 6rem;                          /* 卡片主體預留帶 */
-    --overlap-into-sm: 16px;                     /* 實際重疊量（奇偶一致） */
+    --img-w-sm: calc(var(--img-h-sm) * 3 / 4);  
+    --space-sm: 24px;                            
+    --shift-sm: 1.5rem;                          
+    --reserve-sm: 6rem;                          
+    --overlap-into-sm: 16px;                     
   }
 
-  /* 1) 不要裁掉左側卡片，否則會看起來偏右 */
+  /* 1) 不要裁掉左側卡片*/
   .services { overflow: visible; }
 
   .services__wrap { display:block; padding:0; overflow:visible; }
 
-  /* 2) article 用 margin 置中就好，不要再 left/translate 疊位移 */
+  /* 2) article*/
   .services__article {
     position: relative;
-    width: calc(var(--img-w-sm) + var(--reserve-sm)); /* 可視寬 = 圖片寬 + 預留帶 */
+    width: calc(var(--img-w-sm) + var(--reserve-sm)); 
     margin: 0 auto var(--space-sm);
   }
 
@@ -186,7 +185,7 @@
   .services__article:nth-child(odd)  { --dx: var(--shift-sm); }
   .services__article:nth-child(even) { --dx: calc(-1 * var(--shift-sm)); }
 
-  /* 圖片：固定 3:4。奇數把圖片向右偏（預留帶在左），偶數貼左；再加上交錯位移 --dx */
+  /* 圖片*/
   .services__img {
     display:block;
     width: var(--img-w-sm);
@@ -194,12 +193,12 @@
     object-fit: cover;
     position: relative;
     margin: 0;
-    transform: translateX(var(--dx)); /* 交錯位移（組級） */
+    transform: translateX(var(--dx)); 
   }
-  .services__article:nth-child(odd)  .services__img { left: var(--reserve-sm); } /* 預留在左 */
-  .services__article:nth-child(even) .services__img { left: 0; }                 /* 預留在右（容器多出來那側） */
+  .services__article:nth-child(odd)  .services__img { left: var(--reserve-sm); } 
+  .services__article:nth-child(even) .services__img { left: 0; }                 
 
-  /* 卡片：和圖片吃同一個交錯位移 --dx，避免視覺重心跑 */
+  /* 卡片*/
   .services__card {
     position: absolute;
     top: 50%;
@@ -207,8 +206,7 @@
     box-sizing: border-box;
   }
 
-  /* 奇數：卡片在圖片左側，錨在圖片左緣（= 預留帶起點），
-     再往左移自身寬度、往右回 16px → 精準重疊 16px；最後加上組級交錯位移 --dx */
+  /* 奇數卡片*/
   .services__article:nth-child(odd) .services__card {
     left: var(--reserve-sm);
     right: auto;
@@ -218,8 +216,7 @@
       translateY(-50%);
   }
 
-  /* 偶數：卡片在圖片右側，錨在圖片右緣（= 0 + 圖片寬），
-     再向左 16px；同樣加上 --dx，重疊量與奇數完全一致 */
+  /* 偶數卡片*/
   .services__article:nth-child(even) .services__card {
     left: var(--img-w-sm);
     right: auto;

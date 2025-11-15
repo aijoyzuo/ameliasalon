@@ -1,4 +1,4 @@
-//header-------------------------
+//==========header==========
 .header {
   background-color: rgba(255, 255, 255, 0.5);
   height: 135px;
@@ -43,7 +43,7 @@
   }
 }
 
-// 手機選單按鈕圖示
+// 漢堡包
 .header__menu-icon {
   height: 50px;
   width: auto;
@@ -53,8 +53,7 @@
   }
 }
 
-// ------------------------- 手機版樣式 -------------------------
-/* 手機版樣式 */
+// ========== 手機版樣式 ==========
 @media (max-width: 767.98px) {
   .navbar-collapse {
     background-color: rgba(255, 255, 255, 0.95);
@@ -94,7 +93,7 @@
 }
 
 
-//footer-------------------------
+//==========footer==========
 .footer {
     height: 472px;
     padding-top: 70px;
@@ -129,7 +128,7 @@
     color: var(--color-surface-4);
 }
 
-//contactform-------------------------
+//==========contactform==========
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -170,7 +169,7 @@
     margin-top: 4px;
 }
 
-//ScrollToTopButton-------------------------
+//==========ScrollToTopButton==========
 .scroll-to-top {
     position: fixed;
     width: 50px;

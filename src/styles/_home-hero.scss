@@ -28,7 +28,7 @@ main {
         height: auto;
     }
 
-    /* ===== 1920 以上 pc ===== */
+   
     @media (min-width: 1920px) {
         &__photo--front {
             position: absolute;
@@ -45,7 +45,7 @@ main {
         }
     }
 
-    /* ===== 768 ~ 1919.98 tablet ===== */
+  
     @media (min-width: 768px) and (max-width: 1919.98px) {
         height: 900px;
 
@@ -63,7 +63,7 @@ main {
         }
     }
 
-    /* ===== 360 ~ 767.98 moblie===== */
+ 
     @media (max-width: 767.98px) {
         height: 448px;
 
@@ -117,7 +117,6 @@ main {
 }
 
 
-/* span  */
 .hero__intro__span {
     text-align: left;
 

@@ -8,8 +8,7 @@
   }
 
   &-right {
-    position: relative;
-    /* 讓外掛按鈕能相對這層定位 */
+    position: relative;    
     padding-left: 0;
     padding-right: 0;
   }
@@ -32,7 +31,7 @@
   position: relative;
   overflow: hidden;
   padding-right: 48px;
-  /* 你原有的右側內距 */
+  
 
   /* 圖片方形尺寸*/
   --side: 763px;
@@ -51,7 +50,7 @@
     overflow: visible;
   }
 
-  /* 每張 slide 固定為正方形（配合 JS 的 slidesPerView: 'auto'） */
+  /* 每張 slide 固定為正方形 */
   .swiper-slide {
     width: var(--side) !important;
     height: var(--side);
@@ -98,7 +97,6 @@
 .about__env-right {
   position: relative;
   overflow: visible;
-  /* ✅ 不裁掉 overlay */
   --vw-gap: calc((100vw - 100%) * 0.5);
   --edge-pad: 2px;
 }
