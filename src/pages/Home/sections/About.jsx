@@ -1,4 +1,5 @@
 import InteriorCarousel from "../../../components/InteriorCarousel";
+
 export default function About() {
     return (
         <section>
