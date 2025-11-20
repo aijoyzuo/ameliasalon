@@ -8,7 +8,7 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section className="py-5 services">
+        <section id="services" className="py-5 services">
             <div className="container">
                 <span className="typo-body" style={{ color: 'var(--color-surface-1)' }}>Services</span>
                 <h2 className="typo-headline" style={{ color: 'var(--color-primary-1)' }}>服務介紹</h2>

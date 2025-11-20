@@ -1,6 +1,6 @@
 export default function Portfolio() {
     return (<>
-        <section className="portfolio my-5">
+        <section  id="portfolio" className="portfolio my-5">
             <div className="container">
                 <div>
                     <span className="typo-body" style={{ color: 'var(--color-surface-1)' }}>Portfolio</span>

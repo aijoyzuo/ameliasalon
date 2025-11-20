@@ -6,6 +6,19 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 135px;
+
+   @media (min-width: 768px) and (max-width: 1919.98px) {
+    scroll-padding-top: 88px;
+  }
+
+  @media (max-width: 767.98px) {
+    scroll-padding-top: 70px;
+  }
+}
+
 html,
 body {
   margin: 0;
@@ -17,7 +30,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: hidden;   
 }
 
 // img,

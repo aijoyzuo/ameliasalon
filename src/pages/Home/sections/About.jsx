@@ -2,7 +2,7 @@ import InteriorCarousel from "../../../components/InteriorCarousel";
 
 export default function About() {
     return (
-        <section>
+        <section id="about">
             <div className="about">
                 <div className="container">
                     <div className="about__text">

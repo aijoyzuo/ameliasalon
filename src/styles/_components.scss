@@ -54,16 +54,16 @@
   font-size: 22px;
   font-weight: 600;
   text-decoration: none;
-  color: var(--color-primary-3); /* 默認文字顏色 */
+  color: var(--color-primary-3); 
   position: relative;
   transition: color 0.3s ease, background 0.3s ease;
 
   /* 在 hover 時的漸層效果 */
   &:hover {
-    color: transparent; /* 文字顏色設為透明，以便顯示背景漸層 */
+    color: transparent; 
     
-    background: linear-gradient(180deg, rgb(75, 75, 75), var(--color-surface-4)); /* 黑色到 --color-surface-4 的漸層 */
-    -webkit-background-clip: text; /* 背景漸層應用到文字 */
+    background: linear-gradient(180deg, rgb(75, 75, 75), var(--color-surface-4)); 
+    -webkit-background-clip: text;
   }
 }
 

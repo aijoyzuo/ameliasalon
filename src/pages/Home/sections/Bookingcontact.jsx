@@ -2,7 +2,7 @@ import ContactForm from "../../../components/ContactForm"
 
 export default function Bookingcontact() {
     return (<>
-        <section className="bookingcontact my-2">
+        <section  id="contact" className="bookingcontact my-2">
             <div className="container row align-items-center">
                 <div className="bookingcontact__booking col-12 col-md-8 col-lg-6 mb-3">
                     <div>

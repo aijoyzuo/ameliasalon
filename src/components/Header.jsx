@@ -1,4 +1,13 @@
+import { useRef } from "react";
+
 export default function Header() {
+    const navbarToggleRef = useRef(null);
+
+  const closeNavbar = () => {
+    if (navbarToggleRef.current) {
+      navbarToggleRef.current.click();  
+    }
+  };
   return (
     <nav className="header navbar navbar-expand-md navbar-dark">
       <div className="container">
@@ -20,6 +29,7 @@ export default function Header() {
           aria-controls="mainNavbar"
           aria-expanded="false"
           aria-label="Toggle navigation"
+           ref={navbarToggleRef}
         >
           
           <img
@@ -33,16 +43,16 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="mainNavbar">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link header__link" href="#about">關於我們</a>
+              <a className="nav-link header__link" href="#about"onClick={closeNavbar}>關於我們</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link header__link" href="#services">服務介紹</a>
+              <a className="nav-link header__link" href="#services"onClick={closeNavbar}>服務介紹</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link header__link" href="#portfolio">美髮作品</a>
+              <a className="nav-link header__link" href="#portfolio"onClick={closeNavbar}>美髮作品</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link header__link" href="#contact">聯絡我們</a>
+              <a className="nav-link header__link" href="#contact"onClick={closeNavbar}>聯絡我們</a>
             </li>
 
           </ul>
