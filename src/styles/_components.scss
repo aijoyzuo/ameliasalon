@@ -32,16 +32,41 @@
 }
 
 // 導覽連結
+// .header__link {
+//   font-size: 22px;
+//   color: var(--color-primary-3);
+//   font-weight: 600;
+//   text-decoration: none;
+//   position: relative;
+//   text-shadow: 
+//       0 -1.2px 0px #3B070B;
+//   transition: text-shadow 0.2s ease, color 0.2s ease;
+
+//   &:hover {
+//     color: var(--color-surface-4); /* 顏色變暗，增強內凹感 */
+//     text-shadow: 
+//       0 -1.2px 1px rgba(0, 0, 0, 0.5),   /* 上陰影，讓文字像被壓進去 */
+//       // 0 1px 0px rgba(0, 0, 0, 0.3);  
+//   }
+// }
+
 .header__link {
   font-size: 22px;
-  color: var(--color-primary-3);
   font-weight: 600;
   text-decoration: none;
+  color: var(--color-primary-3); /* 默認文字顏色 */
+  position: relative;
+  transition: color 0.3s ease, background 0.3s ease;
 
+  /* 在 hover 時的漸層效果 */
   &:hover {
-    color: var(--color-surface-4);
+    color: transparent; /* 文字顏色設為透明，以便顯示背景漸層 */
+    
+    background: linear-gradient(180deg, rgb(75, 75, 75), var(--color-surface-4)); /* 黑色到 --color-surface-4 的漸層 */
+    -webkit-background-clip: text; /* 背景漸層應用到文字 */
   }
 }
+
 
 // 漢堡包
 .header__menu-icon {
@@ -56,7 +81,7 @@
 // ========== 手機版樣式 ==========
 @media (max-width: 767.98px) {
   .navbar-collapse {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
     top: 70px;
     left: 0;
