@@ -28,12 +28,7 @@
         padding-top: 20px;
     }
 }
-// .about__env {
-//   border-bottom: 2px solid var(--color-surface-4);
-//   @media (min-width: 768px) and (max-width: 1919.98px) {
-//        border-bottom: 2px solid var(--color-primary-1);
-//     }
-// }
+
 /* ============ About Env ============ */
 .about__env {
   position: relative;
@@ -42,7 +37,7 @@
   &-inner {
     width: 100vw;
     margin-left: 50%;
-    transform: translateX(-50%); // 讓區塊以 viewport 中線為基準置中
+    transform: translateX(-50%); // 整塊區塊以 viewport 置中
   }
 
   &-title {
@@ -57,21 +52,70 @@
     width: 100%;
   }
 
-  /* 🌟 小於 1920px：swiper 右邊貼螢幕，左邊模擬消失在 container 邊界 */
+  /* 🌟 1920 以下：左邊卡在 container，右邊貼螢幕 */
   @media (max-width: 1919.98px) {
-    /* 這一層當作「container 寬度的裁切框」 */
+    /* 這一層是「畫面的裁切框」，左右在 viewport 邊界裁切 */
     &-swiper-clip {
-      width: min(100% - 32px, 1200px); // 跟 .container 一樣：左右各 16px、最大 1200px
-      margin-inline: auto;
-      overflow: hidden;                // 左邊在這裡被裁掉
+      width: 100vw;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+      position: relative; // 給遮罩用
     }
 
-    /* 讓真正的 Swiper 往右吃到整個 viewport */
+    /* 你原本的 swiper 內容（保留你現在已經對齊的狀態） */
     &-swiper-clip .interior-carousel {
-      width: 100vw;                    // 吃滿螢幕寬
-      margin-left: auto;               // 對齊右邊
-      /* 這個公式：讓「container 左邊」變成 swiper 的裁切起點 */
-      margin-right: calc((100% - 100vw) / 2);
+      width: 100vw;
+      margin: 0;
+      padding-right: 0;
+      /* 保留你原本的 padding-inline 設計（在 .interior-carousel 裡） */
+    }
+
+    /* ========== 左側遮罩：讓圖從 container 線開始才看得到 ========== */
+
+    /* < 1200：container = 100% - 32px → 左右各 16px */
+    @media (max-width: 1199.98px) {
+      &-swiper-clip::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 28px; // 跟 .container 左 padding 一樣
+        background-color: var(--color-page-bg, #ffffff); // 換成你實際的內容背景色
+        pointer-events: none;
+        z-index: 9; // 蓋過圖片，但不蓋按鈕（按鈕 z-index:10）
+      }
+    }
+
+    /* 1200 ~ 1919：container 寬 1200，左右 margin auto → 左邊距 = (100vw - 1200) / 2 */
+    @media (min-width: 1200px) and (max-width: 1249.98px) {
+      &-swiper-clip::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: calc((100vw - 1200px) / 2 + 28px); // 跟 .container 左邊一樣
+        background-color: var(--color-page-bg, #ffffff);
+        pointer-events: none;
+        z-index: 9;
+      }
+    }
+
+      
+    @media (min-width: 1250px) and (max-width: 1919.98px) {
+      &-swiper-clip::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: calc((100vw - 1200px) / 2 ); // 跟 .container 左邊一樣
+        background-color: var(--color-page-bg, #ffffff);
+        pointer-events: none;
+        z-index: 9;
+      }
     }
   }
 
@@ -79,7 +123,7 @@
   @media (min-width: 1920px) {
     &-inner {
       display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); // 想要 3/9 就改成 3fr / 9fr
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
       align-items: center;
 
       width: 100vw;
@@ -93,28 +137,35 @@
 
     /* 讓標題看起來跟 .container 左邊完美對齊 */
     &-title .container {
-      max-width: none;             
-      margin: 0;                   
-      padding-left: calc((100vw - 1200px) / 2); // ← 搭配 .container: width: min(100% - 32px, 1200px)
+      max-width: none;
+      margin: 0;
+      padding-left: calc((100vw - 1200px) / 2);
       padding-right: 0;
     }
 
-    /* 不再需要 row 的負 margin */
     &-title .row {
       margin-left: 0;
       margin-right: 0;
     }
 
-    /* 1920+ 的 swiper 就當正常右欄用 */
+    /* 1920+ 的 swiper 就當正常右欄用，不需要遮罩 */
     &-swiper-clip {
       width: 100%;
       margin: 0;
+      transform: none;
       overflow: visible;
+      position: static;
+    }
+
+    &-swiper-clip::before {
+      content: none;
     }
 
     &-swiper-clip .interior-carousel {
       width: 100%;
       margin: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
