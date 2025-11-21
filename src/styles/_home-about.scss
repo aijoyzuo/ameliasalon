@@ -28,9 +28,61 @@
         padding-top: 20px;
     }
 }
+// .about__env {
+//   border-bottom: 2px solid var(--color-surface-4);
+//   @media (min-width: 768px) and (max-width: 1919.98px) {
+//        border-bottom: 2px solid var(--color-primary-1);
+//     }
+// }
+/* ============ About Env ============ */
 .about__env {
-  border-bottom: 2px solid var(--color-surface-4);
-  @media (min-width: 768px) and (max-width: 1919.98px) {
-       border-bottom: 2px solid var(--color-primary-1);
+  position: relative;
+  overflow: hidden;
+
+  &-inner {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%); // 讓區塊以 viewport 中線為基準置中
+  }
+
+  &-title {
+    margin-bottom: 24px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 32px;
     }
+  }
+
+  &-swiper {
+    width: 100%;
+  }
+
+  /* 1920 以上變成 col-3 / col-9 排版 */
+  @media (min-width: 1920px) {
+    &-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); // 左 3 / 右 9
+      align-items: center;
+    }
+
+    &-title {
+      margin-bottom: 0;
+
+      /* 模擬 container 左邊空白：
+         這裡假設你的 container 在大尺寸時 max-width 為 1320px（Bootstrap 5 的預設）
+         如果你專案的 container 寬度不同，把 1320 改成實際數字即可 */
+      padding-left: calc((100vw - 1320px) / 2);
+    }
+
+    /* 讓裡面的 .container 不再縮小寬度，不然會 offset 兩次 */
+    &-title .container {
+      max-width: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    &-swiper {
+      width: 100%;
+    }
+  }
 }

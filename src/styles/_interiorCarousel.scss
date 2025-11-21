@@ -1,39 +1,12 @@
-/* ============ About Env ============ */
-.about__env {  
-  position: relative;
-  overflow-x: hidden;
-
-  &-row {
-    position: relative;
-  }
-
-  &-right {
-    position: relative;    
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @media (min-width: 768px) and (max-width: 1919.98px) {
-    padding-top: 35px;
-  }
-}
-
-/* 滿版輪播*/
-.about__carousel {
-  position: relative;
-  width: 100vw;
-  margin-right: calc((100vw - 100%) / 2);
-  overflow: hidden;
-}
-
 /* ============ Carousel 本體 ============ */
 .interior-carousel {
   position: relative;
   overflow: hidden;
-  padding-right: 48px;
-  
 
-  /* 圖片方形尺寸*/
+  /* 控制左右邊緣預留空間，讓箭頭不壓在圖片上 */
+  padding-inline: 48px;
+
+  /* 正方形邊長 */
   --side: 763px;
 
   @media (min-width: 768px) and (max-width: 1919.98px) {
@@ -42,32 +15,29 @@
 
   @media (max-width: 767.98px) {
     --side: 303px;
+    padding-inline: 16px;
   }
 
-  /* Swiper 主體：允許右邊露出下一張 */
   .swiper {
     position: relative;
-    overflow: visible;
+    overflow: visible; // 讓下一張可以露出
   }
 
-  /* 每張 slide 固定為正方形 */
+  /* 每張 slide 固定為正方形，配合 slidesPerView="auto" */
   .swiper-slide {
     width: var(--side) !important;
     height: var(--side);
   }
 
-  /* 圖片填滿方形，不吃全域 img 規則 */
+  /* 圖片填滿正方形，不吃全域 img 規則 */
   .swiper-slide img {
-    width: auto !important;
-    max-width: none !important;
-    height: var(--side);
-    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
-    margin-inline: auto;
   }
 
-  /* -------- Pagination 分頁點點 -------- */
+  /* -------- Pagination 分頁點點（永遠 3 顆） -------- */
   .swiper-pagination {
     position: static;
     margin-top: 32px;
@@ -91,145 +61,58 @@
     opacity: 1;
     background: var(--color-primary-3);
   }
-}
 
-/* ============ 按鈕位置 ============ */
-.about__env-right {
-  position: relative;
-  overflow: visible;
-  --vw-gap: calc((100vw - 100%) * 0.5);
-  --edge-pad: 2px;
-}
-
-
-.about__env-right .edge-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-
-  right: calc(var(--vw-gap) * -0.5);
-  pointer-events: none;
-  z-index: 50;
-}
-
-@media (min-width: 980px) {
-  .about__env-right .edge-overlay {
-    right: calc(var(--vw-gap) * -0.6);
-  }
-}
-
-@media (min-width: 1200px) {
-  .about__env-right .edge-overlay {
-    right: calc(var(--vw-gap) * 0);
-  }
-}
-
-@media (min-width: 1920px) {
-  .about__env-right .edge-overlay {
-    right: calc(var(--vw-gap) * -0.6);
-  }
-}
-
-/* 右鍵 */
-.about__env-right .edge-overlay .swiper-button-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: var(--edge-pad); 
-  left: auto;
-  pointer-events: auto;
-  z-index: 100;
-}
-
-/* 左鍵 */
-.about__env-right .swiper-button-prev {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: clamp(8px, 2vw, 24px);
-  right: auto;
-  z-index: 100;
-}
-
-/* 防溢出*/
-.swiper-button-lock {
-  display: flex !important;
-}
-
-.swiper-button-disabled {
-  display: flex !important;
-  opacity: .35;
-  pointer-events: none;
-}
-
-
-@media (min-width: 1200px) {
-  .about__env-right {
-    --edge-pad: 1px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .about__env-right {
-    --edge-pad: 0px;
-  }
-}
-
-
-/* ============ Navigation 造型（共用） ============ */
-.swiper-button-prev svg,
-.swiper-button-next svg {
-  display: none !important;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  z-index: 10;
-  width: 24px !important;
-  height: 24px !important;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px !important;
-  border: 2px solid var(--color-surface-2);
-  box-sizing: border-box;
-  color: var(--color-surface-2) !important;
-  background-color: var(--color-primary-1);
-  transition: background-color .3s ease, color .3s ease, transform .2s ease;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, .4);
-
-  box-shadow: none;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 12px !important;
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  background-color: var(--color-surface-4);
-  color: var(--color-surface-3);
-  border-color: var(--color-surface-3);
-
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.5),
-    0 2px 4px rgba(0, 0, 0, 0.4);  
-}
-
-
-@media (min-width: 768px) {
+  /* ============ Navigation 造型 ============ */
 
   .swiper-button-prev,
   .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
     width: 40px !important;
     height: 40px !important;
-    padding: 4px !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--color-surface-2);
+    box-sizing: border-box;
+    color: var(--color-surface-2) !important;
+    background-color: var(--color-primary-1);
+    transition: background-color .3s ease, color .3s ease, transform .2s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+
+    box-shadow: none;
   }
 
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    font-size: 12px !important;
+  .swiper-button-prev {
+    left: clamp(8px, 2vw, 32px);
+  }
+
+  .swiper-button-next {
+    right: clamp(8px, 2vw, 32px);
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 14px !important;
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background-color: var(--color-surface-4);
+    color: var(--color-surface-3);
+    border-color: var(--color-surface-3);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Swiper 會加這個 class 來隱藏按鈕，這裡確保 layout 不炸掉 */
+  .swiper-button-lock {
+    display: flex !important;
   }
 }
