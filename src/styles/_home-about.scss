@@ -57,32 +57,64 @@
     width: 100%;
   }
 
-  /* 1920 以上變成 col-3 / col-9 排版 */
+  /* 🌟 小於 1920px：swiper 右邊貼螢幕，左邊模擬消失在 container 邊界 */
+  @media (max-width: 1919.98px) {
+    /* 這一層當作「container 寬度的裁切框」 */
+    &-swiper-clip {
+      width: min(100% - 32px, 1200px); // 跟 .container 一樣：左右各 16px、最大 1200px
+      margin-inline: auto;
+      overflow: hidden;                // 左邊在這裡被裁掉
+    }
+
+    /* 讓真正的 Swiper 往右吃到整個 viewport */
+    &-swiper-clip .interior-carousel {
+      width: 100vw;                    // 吃滿螢幕寬
+      margin-left: auto;               // 對齊右邊
+      /* 這個公式：讓「container 左邊」變成 swiper 的裁切起點 */
+      margin-right: calc((100% - 100vw) / 2);
+    }
+  }
+
+  /* ============ 1920+：左 4 欄（標題） / 右 8 欄（swiper） ============ */
   @media (min-width: 1920px) {
     &-inner {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); // 左 3 / 右 9
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); // 想要 3/9 就改成 3fr / 9fr
       align-items: center;
+
+      width: 100vw;
+      margin-left: 50%;
+      transform: translateX(-50%);
     }
 
     &-title {
       margin-bottom: 0;
-
-      /* 模擬 container 左邊空白：
-         這裡假設你的 container 在大尺寸時 max-width 為 1320px（Bootstrap 5 的預設）
-         如果你專案的 container 寬度不同，把 1320 改成實際數字即可 */
-      padding-left: calc((100vw - 1320px) / 2);
     }
 
-    /* 讓裡面的 .container 不再縮小寬度，不然會 offset 兩次 */
+    /* 讓標題看起來跟 .container 左邊完美對齊 */
     &-title .container {
-      max-width: none;
-      padding: 0;
-      margin: 0;
+      max-width: none;             
+      margin: 0;                   
+      padding-left: calc((100vw - 1200px) / 2); // ← 搭配 .container: width: min(100% - 32px, 1200px)
+      padding-right: 0;
     }
 
-    &-swiper {
+    /* 不再需要 row 的負 margin */
+    &-title .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* 1920+ 的 swiper 就當正常右欄用 */
+    &-swiper-clip {
       width: 100%;
+      margin: 0;
+      overflow: visible;
+    }
+
+    &-swiper-clip .interior-carousel {
+      width: 100%;
+      margin: 0;
     }
   }
 }

@@ -31,12 +31,12 @@ export default function About() {
        <div className="about__env my-3 my-lg-5 pb-3 pb-lg-5">
         <div className="about__env-inner">
           {/* 標題區：小螢幕時獨立一行，跟 container 對齊 */}
-          <div className="about__env-title">
+          <div className="about__env-title mb-0">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-12 col-lg-3">
                   <span className="typo-body" style={{ color: 'var(--color-surface-1)' }}>Environment</span>
-                  <h2 className="typo-headline" style={{ color: 'var(--color-primary-1)' }}>室內環境</h2>
+                  <h2 className="typo-headline text-nowrap" style={{ color: 'var(--color-primary-1)' }}>室內環境</h2>
                 </div>
               </div>
             </div>
@@ -44,7 +44,9 @@ export default function About() {
 
           {/* Swiper 區：不包 container，方便吃滿寬度 */}
           <div className="about__env-swiper">
-            <InteriorCarousel />
+             <div className="about__env-swiper-clip">
+    <InteriorCarousel />
+             </div>        
           </div>
         </div>
       </div>
