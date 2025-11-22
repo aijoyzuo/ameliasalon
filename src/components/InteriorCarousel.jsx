@@ -16,7 +16,7 @@ export default function InteriorCarousel() {
         navigation={true}            
         keyboard={{ enabled: true }}
         centeredSlides={false}
-        loop={false}                 
+        loop={true}                 
         rewind={true}                
         watchOverflow={false}        
         speed={600}

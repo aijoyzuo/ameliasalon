@@ -129,12 +129,13 @@
     display: block;
     stroke: currentColor !important;
     fill: none !important;
+    stroke-width: 2 !important;
   }
 
   .swiper-button-prev svg path,
   .swiper-button-next svg path {
     stroke: currentColor !important;
-    fill: none !important;
+    fill: transparent  !important;
   }
 
   .swiper-button-prev:hover,

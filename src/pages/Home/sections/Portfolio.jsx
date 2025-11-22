@@ -22,7 +22,7 @@ export default function Portfolio() {
                     </div>
                 </div>
             </div>
-            <div className="row g-0 portfolio__row-nogutter align-items-center justify-content-center">
+            <div className="row g-0 portfolio__row-nogutter align-items-center justify-content-end justify-content-lg-center">
                 <div className="col-3">
                     <div className="portfolio__title">
                         <span className="typo-title" style={{ color: 'var(--color-primary-2)' }}>染髮作品</span>
