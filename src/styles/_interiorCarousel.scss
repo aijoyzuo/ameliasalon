@@ -2,7 +2,7 @@
 .interior-carousel {
   position: relative;
   overflow: hidden;
-  padding-inline: 48px; // 預留左右箭頭空間
+  padding-inline: 48px; 
 
   /* 圖片正方形尺寸 */
   --side: 763px;
@@ -13,12 +13,12 @@
 
   @media (max-width: 767.98px) {
     --side: 303px;
-    padding-inline: 16px; // 手機稍微收窄一點
+    padding-inline: 16px; 
   }
 
   .swiper {
     position: relative;
-    overflow: visible; // 才能看到下一張露出
+    overflow: visible; 
   }
 
   .swiper-slide {
@@ -33,7 +33,7 @@
     display: block;
   }
 
-  /* -------- Pagination 分頁點點 -------- */
+  /* -------- Pagination  -------- */
   .swiper-pagination {
     position: static;
     margin-top: 32px;
@@ -90,7 +90,7 @@
     transform: translateY(-50%);
   }
 
-  /* -------- 預設（當作 fallback，只給很小或很大的寬度用） -------- */
+  /* -------- 預設 -------- */
   .swiper-button-prev {
     left: 24px !important;
   }
@@ -99,7 +99,7 @@
     right: 16px !important;
   }
 
-  /* 1200 ~ 1249：以「container 左線 + 32px」為基準 */
+  /* 1200 ~ 1249 */
   @media (min-width: 1200px) and (max-width: 1249.98px) {
     .swiper-button-prev {
       left: calc((100vw - 1200px) / 2 + 32px);
@@ -110,7 +110,7 @@
     }
   }
 
-  /* 1250 ~ 1919：直接用固定值控制更靠中間 */
+  /* 1250 ~ 1919 */
   @media (min-width: 1250px) and (max-width: 1919.98px) {
     .swiper-button-prev {
       left: 80px !important;
@@ -121,7 +121,7 @@
     }
   }
 
-  /* 控制裡面的 SVG 尺寸 + 顏色 */
+  /*  SVG */
   .swiper-button-prev svg,
   .swiper-button-next svg {
     width: 70%;

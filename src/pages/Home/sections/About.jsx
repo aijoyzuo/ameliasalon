@@ -1,4 +1,3 @@
-// pages/.../About.jsx
 import InteriorCarousel from "../../../components/InteriorCarousel";
 
 export default function About() {
@@ -30,7 +29,7 @@ export default function About() {
       {/* 室內環境 */}
        <div className="about__env my-3 my-lg-5 pb-3 pb-lg-5">
         <div className="about__env-inner">
-          {/* 標題區：小螢幕時獨立一行，跟 container 對齊 */}
+          {/* 標題區 */}
           <div className="about__env-title mb-0">
             <div className="container">
               <div className="row align-items-center">
@@ -42,7 +41,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Swiper 區：不包 container，方便吃滿寬度 */}
+          {/* Swiper*/}
           <div className="about__env-swiper">
              <div className="about__env-swiper-clip">
     <InteriorCarousel />
